@@ -1,4 +1,5 @@
-"""AEGISQ — Quantum-Ready Threat Defense Platform."""
+"""AEGISQ — Quantum-Ready Threat Detection Engine"""
 
-__version__ = "1.0.0"
-__author__ = "Unknown2U"
+from .detection import AEGISQDetector, EnsembleAnomalyDetector
+
+__version__ = "2.0.0"
