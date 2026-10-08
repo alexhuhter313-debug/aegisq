@@ -1,1 +1,1 @@
-PLACEHOLDER
+version: "3.9"\nservices:\n  aegisq:\n    build: .\n    container_name: aegisq-detector\n    volumes:\n      - ./data:/app/data\n      - ./reports:/app/reports\n    command: aegisq detect\n    restart: unless-stopped\n

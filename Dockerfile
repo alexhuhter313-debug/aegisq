@@ -1,10 +1,1 @@
-FROM python:3.11-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-CMD ["python", "-m", "aegisq"]
+FROM python:3.11-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY pyproject.toml src/ .\nCOPY src/ src/\nRUN pip install -e .\nCMD ["aegisq"]\n
