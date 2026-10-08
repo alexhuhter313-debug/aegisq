@@ -1,26 +1,23 @@
-# AEGISQ — Quantum-Ready AI Threat Detection Platform
+# AEGISQ v2 — Quantum-Ready AI Threat Detection
 
-Ensemble ML detection (Autoencoder + Isolation Forest) + Fortress defense/offense suite + NexusProbe attack surface mapping.
-
-## Structure
-```
-src/aegisq/
-├── __init__.py          # Package init
-├── cli.py               # CLI entry (aegisq detect/recon/vuln/...)
-├── detection.py         # ML pipeline (21K-lines engine)
-├── core/kernel.py       # Command dispatcher
-├── modules/fortress/    # Offense/defense suite
-└── tools/
-    ├── base.py          # Finding/reporting base
-    └── nexusprobe.py    # Attack surface mapper
-```
+AI-powered XDR/SOC automation.
 
 ## Quick Start
-```bash
-docker compose up -d
-# or
-pip install -e .
-aegisq detect
+```
+aegisq pipeline
+aegisq serve
+aegisq recon -t example.com
+aegisq nexus -t example.com
 ```
 
-## Commands: detect | recon | vuln | network | probe | fortress
+## Services
+| Service | Port | Description |
+|---------|------|-------------|
+| API | 8000 | REST detection endpoint |
+| Detector | — | Batch pipeline |
+
+## Stack
+- Detector: NumPy autoencoder
+- Fortress: Offense/defense suite
+- NexusProbe: Attack surface mapper
+- API: FastAPI

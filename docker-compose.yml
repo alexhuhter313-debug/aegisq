@@ -1,1 +1,14 @@
-version: "3.9"\nservices:\n  aegisq:\n    build: .\n    container_name: aegisq-detector\n    volumes:\n      - ./data:/app/data\n      - ./reports:/app/reports\n    command: aegisq detect\n    restart: unless-stopped\n
+version: "3.9"
+services:
+  detector:
+    build: .
+    command: aegisq pipeline
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    command: uvicorn aegisq.api:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
